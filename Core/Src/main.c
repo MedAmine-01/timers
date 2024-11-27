@@ -65,10 +65,20 @@ void run_motors(int PWMR, int PWML){
 	if(PWMR>0){
 		htim1.Instance->CCR1=PWMR;
 		htim1.Instance->CCR2=0;
+
+		/* Tnajmou testa3mlou el function hedhi ama netsawer enek tbdel el ccr mel register toul as'hel
+		__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1, PWMR);
+		__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2, 0);
+		*/
 	}
 	else {
 		htim1.Instance->CCR1=0;
 		htim1.Instance->CCR2=-PWMR;
+		/*
+		__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1, 0);
+		__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2, -PWMR);
+		*/
+
 	}
 	if(PWML>0){
 		htim1.Instance->CCR3=PWML;
